@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}404 Not Found{% endblock %}
+
+{% block content %}
+    <div style="text-align: center;">
+        <!-- H1 uses class for specific color defined in base.html -->
+        <h1 class="error-h1">Error 404: Not Found</h1>
+        <p>The **{{ item_type }}** with identifier **{{ item_id }}** could not be found in the database.</p>
+        <p>Please check the ID or go back to the list.</p>
+        <a href="{{ url_for('index') }}" class="button-link">Go to Task List</a>
+    </div>
+{% endblock %}

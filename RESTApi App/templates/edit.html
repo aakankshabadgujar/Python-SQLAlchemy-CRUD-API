@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Task{% endblock %}
+
+{% block content %}
+    <!-- H1 uses class for specific color defined in base.html -->
+    <h1 class="edit-h1">Edit Task (ID: {{ task.id }})</h1>
+
+    <!-- 4. UPDATE Form (Submits to /edit/<id> using POST) -->
+    <form method="POST" action="{{ url_for('update', id=task.id) }}">
+        
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <!-- Jinja is used here to PRE-FILL the current database value -->
+            <input type="text" id="title" name="title" value="{{ task.title }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <!-- Jinja pre-fills the current description -->
+            <textarea id="description" name="desc" rows="3">{{ task.desc or '' }}</textarea>
+        </div>
+
+        <button type="submit" class="save-btn">Save Changes</button>
+        <a href="{{ url_for('index') }}" class="button-link">Cancel</a>
+    </form>
+{% endblock %}
